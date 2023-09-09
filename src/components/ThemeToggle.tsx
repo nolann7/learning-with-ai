@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
@@ -16,7 +16,17 @@ export function ThemeToggle({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
+  const [mounted, setMounted] = useState(false);
   const { setTheme } = useTheme();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <div className={className} {...props}>
