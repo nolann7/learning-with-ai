@@ -8,7 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from './ui/input';
 import { Separator } from './ui/separator';
 import { Button } from './ui/button';
-import { Plus, Trash } from 'lucide-react';
+import { Loader2, Plus, Trash } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
@@ -156,13 +156,17 @@ const CreateCourseForm = ({ isPro }: Props) => {
             </div>
             <Separator className="flex-[1]" />
           </div>
-          <Button
-            disabled={isLoading}
-            type="submit"
-            className="w-full mt-6"
-            size="lg">
-            Lets Go!
-          </Button>
+          {isLoading ? (
+            <Loader2 className="w-10 h-10 animate-spin" />
+          ) : (
+            <Button
+              disabled={isLoading}
+              type="submit"
+              className="w-full mt-6"
+              size="lg">
+              Lets Go!
+            </Button>
+          )}
         </form>
       </Form>
       {!isPro && <SubscriptionAction />}
