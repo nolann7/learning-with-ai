@@ -15,14 +15,14 @@ const MainVideoSummary = ({
   chapterIndex,
 }: Props) => {
   return (
-    <div className="flex-[2] mt-16 max-w-2xl">
+    <div className="flex-[2] mt-4 max-w-2xl">
       <h4 className="text-sm uppercase text-secondary-foreground/60">
         Unit {unitIndex + 1} &bull; Chapter {chapterIndex + 1}
       </h4>
       <h1 className="text-4xl font-bold">{chapter.name}</h1>
       <iframe
         title="chapter video"
-        className="w-full mt-4 aspeect-video max-h-[24rem]"
+        className="w-full mt-4 aspect-video max-h-[24rem]"
         src={`https://www.youtube.com/embed/${chapter.videoId}`}
         allowFullScreen
       />

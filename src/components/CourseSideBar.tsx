@@ -11,11 +11,16 @@ type Props = {
     })[];
   };
   currentChapterId: string;
+  classes?: string;
 };
 
-const CourseSideBar = async ({ course, currentChapterId }: Props) => {
+const CourseSideBar = async ({ course, currentChapterId, classes }: Props) => {
   return (
-    <div className="max-[1150px]:hidden w-[400px] mt-[150px] mb-8 absolute top-1/2 -translate-y-1/2 p-6 rounded-r-3xl bg-secondary">
+    <div
+      className={cn(
+        'max-w-[350px] sm:w-[350px] mt-[50px] mb-8 absolute top-1/2 -translate-y-1/2 p-6 rounded-r-3xl bg-secondary overflow-auto',
+        classes,
+      )}>
       <h1 className="text-4xl font-bold">{course.name}</h1>
       {course.units.map((unit, unitIndex) => {
         return (
