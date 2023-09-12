@@ -7,7 +7,7 @@ type Props = {};
 const SettingsPage = async (props: Props) => {
   const isPro = await checkSubscription();
   return (
-    <div className="py-8 mx-auto max-w-7xl">
+    <div className="px-4 py-8 mx-auto max-w-7xl">
       <h1 className="text-3xl font-bold">Settings</h1>
       {isPro ? (
         <p className="text-xl text-secondary-foreground/60">
