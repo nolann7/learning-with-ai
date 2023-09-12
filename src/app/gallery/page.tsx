@@ -14,7 +14,7 @@ const GalleryPage = async (props: Props) => {
   });
   return (
     <div className="py-8 mx-auto max-w-7xl">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center max-w-[95%] mx-auto">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start justify-items-center max-w-[95%] mx-auto">
         {courses.map(course => {
           return <GalleryCourseCard course={course} key={course.id} />;
         })}
