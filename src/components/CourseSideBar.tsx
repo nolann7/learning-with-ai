@@ -18,7 +18,7 @@ const CourseSideBar = async ({ course, currentChapterId, classes }: Props) => {
   return (
     <div
       className={cn(
-        'max-w-[350px] sm:w-[350px] mt-[50px] mb-8 absolute top-1/2 -translate-y-1/2 p-6 rounded-r-3xl bg-secondary overflow-auto',
+        'max-w-[350px] sm:w-[350px] mt-[32px] mb-8 absolute top-0 p-6 rounded-r-3xl bg-secondary overflow-auto',
         classes,
       )}>
       <h1 className="text-4xl font-bold">{course.name}</h1>
