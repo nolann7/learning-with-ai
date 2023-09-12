@@ -45,17 +45,19 @@ const CoursePage = async ({ params: { slug } }: Props) => {
   const prevChapter = unit.chapters[chapterIndex - 1];
   return (
     <div>
-      <CourseSideBar course={course} currentChapterId={chapter.id} />;
+      <CourseSideBar course={course} currentChapterId={chapter.id} />
       <div>
-        <div className="ml-[400px] px-8">
-          <div className="flex">
+        <div className="min-[1150px]:ml-[400px] px-8">
+          <div className="flex flex-col gap-8 md:flex-row">
             <MainVideoSummary
               chapter={chapter}
               chapterIndex={chapterIndex}
               unit={unit}
               unitIndex={unitIndex}
             />
-            <QuizCards chapter={chapter} />
+            {chapter.questions.length > 0 ? (
+              <QuizCards chapter={chapter} />
+            ) : null}
           </div>
 
           <div className="flex-[1] h-[1px] mt-4 text-gray-500 bg-gray-500" />
