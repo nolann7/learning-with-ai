@@ -6,6 +6,8 @@ import { prisma } from '@/lib/db';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Button } from '@/components/ui/button';
 
 type Props = {
   params: {
@@ -44,10 +46,28 @@ const CoursePage = async ({ params: { slug } }: Props) => {
   const nextChapter = unit.chapters[chapterIndex + 1];
   const prevChapter = unit.chapters[chapterIndex - 1];
   return (
-    <div>
-      <CourseSideBar course={course} currentChapterId={chapter.id} />
+    <div className="relative">
+      <CourseSideBar
+        course={course}
+        currentChapterId={chapter.id}
+        classes="max-[1150px]:hidden"
+      />
       <div>
-        <div className="min-[1150px]:ml-[400px] px-8">
+        <div className="min-[1150px]:ml-[350px] px-8">
+          <div className={`min-[1150px]:hidden mt-4`}>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline">Course Units</Button>
+              </SheetTrigger>
+              <SheetContent className="pl-0" side={'left'}>
+                <CourseSideBar
+                  course={course}
+                  currentChapterId={chapter.id}
+                  classes="w-[370px] mt-9 h-[100%] content-fit"
+                />
+              </SheetContent>
+            </Sheet>
+          </div>
           <div className="flex flex-col gap-8 md:flex-row">
             <MainVideoSummary
               chapter={chapter}
