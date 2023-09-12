@@ -157,7 +157,9 @@ const CreateCourseForm = ({ isPro }: Props) => {
             <Separator className="flex-[1]" />
           </div>
           {isLoading ? (
-            <Loader2 className="w-10 h-10 animate-spin" />
+            <div className="flex items-center justify-items-center">
+              <Loader2 className="w-10 h-10 animate-spin" />
+            </div>
           ) : (
             <Button
               disabled={isLoading}
