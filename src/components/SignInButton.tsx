@@ -7,13 +7,23 @@ type SignInButtonProps = {};
 
 const SignInButton = (props: SignInButtonProps) => {
   return (
-    <Button
-      variant="ghost"
-      onClick={() => {
-        signIn('google');
-      }}>
-      Sign In
-    </Button>
+    <>
+      <Button
+        variant="ghost"
+        onClick={() => {
+          signIn('google');
+        }}>
+        Sign In
+      </Button>
+      <Button
+        variant="ghost"
+        onClick={() => {
+          // signIn();
+          signIn('credentials');
+        }}>
+        Sign In Demo
+      </Button>
+    </>
   );
 };
 
