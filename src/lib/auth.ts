@@ -2,6 +2,7 @@ import { DefaultSession, NextAuthOptions, getServerSession } from 'next-auth';
 import { prisma } from './db';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import GoogleProvider from 'next-auth/providers/google';
+import CredentialsProvider from 'next-auth/providers/credentials';
 
 declare module 'next-auth' {
   interface Session extends DefaultSession {
@@ -53,6 +54,41 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID as string,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+    }),
+    CredentialsProvider({
+      name: 'Credentials',
+      credentials: {
+        username: { label: 'Username', type: 'text', placeholder: 'test_user' },
+        password: {
+          label: 'Password',
+          type: 'password',
+          placeholder: 'test_user_password',
+        },
+      },
+      async authorize(credentials, req) {
+        // const res = await fetch(
+        //   `${process.env.NEXTAUTH_URL}/api/auth/credentials/`,
+        //   {
+        //     method: 'POST',
+        //     body: JSON.stringify(credentials),
+        //     headers: { 'Content-Type': 'application/json' },
+        //   },
+        // );
+        // const user = await res.json();
+        const user = {
+          id: '1000',
+          name: 'Demo User',
+          image: 'https://etibd.org/wp-content/uploads/2023/01/team.png',
+          credits: 10,
+        };
+
+        // If no error and we have user data, return it
+        // if (res.ok && user) {
+        return user;
+        // }
+        // Return null if user data could not be retrieved
+        // return null;
+      },
     }),
   ],
 };

@@ -21,6 +21,7 @@ const Navbar = async (props: Props) => {
           <Link href="/gallery" className="mr-3">
             Gallery
           </Link>
+
           {session?.user && (
             <>
               <Link href="/create" className="hidden mr-3 max-sm:block">

@@ -1,20 +1,20 @@
 'use client';
 import React from 'react';
 import { Form, FormControl, FormField, FormItem, FormLabel } from './ui/form';
-import { z } from 'zod';
 import { createChaptersSchema } from '@/validators/course';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Input } from './ui/input';
 import { Separator } from './ui/separator';
 import { Button } from './ui/button';
 import { Loader2, Plus, Trash } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useMutation } from '@tanstack/react-query';
-import axios from 'axios';
 import { useToast } from './ui/use-toast';
 import { useRouter } from 'next/navigation';
 import SubscriptionAction from './SubscriptionAction';
+import axios from 'axios';
 
 type Props = { isPro: boolean };
 
