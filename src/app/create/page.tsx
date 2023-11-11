@@ -1,9 +1,9 @@
-import { getAuthSession } from '@/lib/auth';
 import React from 'react';
 import { redirect } from 'next/navigation';
 import { InfoIcon } from 'lucide-react';
 import CreateCourseForm from '@/components/CreateCourseForm';
 import { checkSubscription } from '@/lib/subscription';
+import { getAuthSession } from '@/lib/auth';
 
 type Props = {};
 

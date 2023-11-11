@@ -94,6 +94,7 @@ export async function POST(req: Request, res: Response) {
     return NextResponse.json({ course_id: course.id });
   } catch (error) {
     if (error instanceof ZodError) {
+      console.log(error);
       return new NextResponse('invalid body', { status: 400 });
     }
     console.error(error);
