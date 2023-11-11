@@ -51,5 +51,8 @@
   },
   "devDependencies": {
     "prisma": "^5.1.1"
+  },
+  "browser": {
+    "crypto": false
   }
 }
