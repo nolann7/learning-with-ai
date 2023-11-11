@@ -15,14 +15,14 @@ const SignInButton = (props: SignInButtonProps) => {
         }}>
         Sign In
       </Button>
-      <Button
+      {/* <Button
         variant="ghost"
         onClick={() => {
           // signIn();
           signIn('credentials');
         }}>
         Sign In Demo
-      </Button>
+      </Button> */}
     </>
   );
 };
