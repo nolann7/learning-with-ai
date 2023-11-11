@@ -23,7 +23,7 @@
     }
   },
   "paths": {
-    "crypto": ["node_modules/crypto-js"]
+    "crypto": ["node_modules/crypto-browserify"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
