@@ -4,8 +4,8 @@ import { NextResponse } from 'next/server';
 import { createChaptersSchema } from '@/validators/course';
 import { ZodError } from 'zod';
 import { strict_output } from '@/lib/gpt';
-import { getUnsplashImage } from '@/lib/unsplash';
-import { prisma } from '@/lib/db';
+// import { getUnsplashImage } from '@/lib/unsplash';
+// import { prisma } from '@/lib/db';
 // import { getAuthSession } from '@/lib/auth';
 // import { checkSubscription } from '@/lib/subscription';
 
@@ -51,35 +51,36 @@ export async function POST(req: Request, res: Response) {
         image_search_term: 'a good search term for the title of the course',
       },
     );
+    console.log({ output_units, imageSearchTerm });
+    console.log('hoooraaay');
+    // const course_image = await getUnsplashImage(
+    //   imageSearchTerm.image_search_term,
+    // );
+    // const course = await prisma.course.create({
+    //   data: {
+    //     name: title,
+    //     image: course_image,
+    //   },
+    // });
 
-    const course_image = await getUnsplashImage(
-      imageSearchTerm.image_search_term,
-    );
-    const course = await prisma.course.create({
-      data: {
-        name: title,
-        image: course_image,
-      },
-    });
-
-    for (const unit of output_units) {
-      const title = unit.title;
-      const prismaUnit = await prisma.unit.create({
-        data: {
-          name: title,
-          courseId: course.id,
-        },
-      });
-      await prisma.chapter.createMany({
-        data: unit.chapters.map(chapter => {
-          return {
-            name: chapter.chapter_title,
-            youtubeSearchQuery: chapter.youtube_search_query,
-            unitId: prismaUnit.id,
-          };
-        }),
-      });
-    }
+    // for (const unit of output_units) {
+    //   const title = unit.title;
+    //   const prismaUnit = await prisma.unit.create({
+    //     data: {
+    //       name: title,
+    //       courseId: course.id,
+    //     },
+    //   });
+    //   await prisma.chapter.createMany({
+    //     data: unit.chapters.map(chapter => {
+    //       return {
+    //         name: chapter.chapter_title,
+    //         youtubeSearchQuery: chapter.youtube_search_query,
+    //         unitId: prismaUnit.id,
+    //       };
+    //     }),
+    //   });
+    // }
     // await prisma.user.update({
     //   where: {
     //     id: session.user.id,
@@ -91,7 +92,8 @@ export async function POST(req: Request, res: Response) {
     //   },
     // });
 
-    return NextResponse.json({ course_id: course.id });
+    return NextResponse.json({ course_id: 'success' });
+    // return NextResponse.json({ course_id: course.id });
   } catch (error) {
     if (error instanceof ZodError) {
       console.log(error);
