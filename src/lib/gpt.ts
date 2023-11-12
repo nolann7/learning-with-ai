@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi, ResponseTypes } from 'openai-edge';
-
+// unfortunately this is not working because vercel give only 25s for init response on edge
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
