@@ -9,7 +9,7 @@ import { strict_output } from '@/lib/gpt';
 // import { getAuthSession } from '@/lib/auth';
 // import { checkSubscription } from '@/lib/subscription';
 
-// export const runtime = 'edge';
+export const runtime = 'edge';
 
 export async function POST(req: Request, res: Response) {
   try {
