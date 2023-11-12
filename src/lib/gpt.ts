@@ -1,4 +1,4 @@
-import { Configuration, OpenAIApi } from 'openai';
+import { Configuration, OpenAIApi, ResponseTypes } from 'openai-edge';
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -64,10 +64,13 @@ export async function strict_output(
       ],
     });
 
-    let res: string =
-      response.data.choices[0].message?.content?.replace(/'/g, '"') ?? '';
-    console.log(res);
-
+    // console.log('response', response);
+    // let res: string =
+    //   response.data.choices[0].message?.content?.replace(/'/g, '"') ?? ''; // for openai - not for openai-edge
+    let resObj =
+      (await response.json()) as ResponseTypes['createChatCompletion'];
+    let res = resObj.choices[0].message?.content?.replace(/'/g, '"') ?? '';
+    console.log('res', res);
     // ensure that we don't replace away apostrophes in text
     res = res.replace(/(\w)"(\w)/g, "$1'$2");
 
